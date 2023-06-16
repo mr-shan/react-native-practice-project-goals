@@ -1,40 +1,45 @@
-import { StyleSheet, Text, View, Pressable } from "react-native";
+import { StyleSheet, Text, View, Pressable, Platform } from "react-native";
 
 export default (props) => {
+  const getPressableClasses = ({pressed}) => {
+    const classNames = [styles.innerContainer];
+    pressed && Platform.OS === "ios" && classNames.push(styles.pressed);
+    return classNames;
+  };
+
   return (
-    <View style={styles.footer}>
-      <View style={styles.roundedCorner}>
-        <Pressable
-          onPress={props.onPressHandler}
-          android_ripple={{ color: "#006262" }}
-          style={({ pressed }) => pressed && styles.pressed}
-        >
-          <Text style={styles.addNewGoalButton}>Add New Goal +</Text>
-        </Pressable>
-      </View>
+    <View style={styles.outerContainer}>
+      <Pressable
+        android_ripple={{ color: "#039292" }}
+        onPress={props.onPressHandler}
+        style={getPressableClasses}
+      >
+        <Text style={styles.buttonText}>Add New Goal +</Text>
+      </Pressable>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
-  footer: {
-    padding: 20,
+  outerContainer: {
+    borderRadius: 36,
+    overflow: "hidden",
+    margin: 18,
+    marginTop: 0,
+    elevation: 4
   },
-  roundedCorner: {
-    borderRadius: 16,
-    borderColor: "teal",
+  innerContainer: {
     backgroundColor: "teal",
+    paddingVertical: 12,
+    elevation: 4,
   },
-  addNewGoalButton: {
-    textAlign: "center",
+  buttonText: {
+    fontSize: 18,
     color: "white",
     fontWeight: "bold",
-    fontSize: 18,
-    borderRadius: 16,
-    paddingVertical: 16,
+    textAlign: "center",
   },
   pressed: {
-    opacity: 0.5,
-    backgroundColor: "#009c9c",
-  },
+    opacity: 0.75
+  }
 });

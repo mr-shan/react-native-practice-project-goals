@@ -70,6 +70,7 @@ const styles = StyleSheet.create({
   },
   container: {
     padding: 14,
+    paddingTop: 0,
     flex: 1
   },
   noGoalsFoundWrapper: {
