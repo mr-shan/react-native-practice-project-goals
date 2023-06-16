@@ -1,4 +1,4 @@
-import { FlatList, View, Text, StyleSheet } from "react-native";
+import { FlatList, View, Text, StyleSheet, Pressable } from "react-native";
 
 export default (props) => {
   const removeGoal = (id) => {
@@ -6,14 +6,13 @@ export default (props) => {
   };
   const ListItem = (props) => {
     return (
-      <View style={styles.listItem}>
-        <Text
-          style={styles.listTitle}
-          onPress={removeGoal.bind(this, props.item.key)}
-        >
-          {props.item.text}
-        </Text>
-      </View>
+      <Pressable
+        style={styles.listItem}
+        android_ripple={{color: '#ccc'}}
+        onPress={removeGoal.bind(this, props.item.key)}
+      >
+        <Text style={styles.listTitle}>{props.item.text}</Text>
+      </Pressable>
     );
   };
 
@@ -28,7 +27,7 @@ export default (props) => {
 
 const styles = StyleSheet.create({
   listContainer: {
-    padding: 14
+    padding: 14,
   },
   listItem: {
     backgroundColor: "#eee",
@@ -38,6 +37,7 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 16,
     marginBottom: 10,
+    overflow: 'hidden'
   },
   listTitle: {
     color: "#333",
