@@ -69,8 +69,6 @@ const styles = StyleSheet.create({
     height: "100%",
   },
   container: {
-    padding: 14,
-    paddingTop: 0,
     flex: 1
   },
   noGoalsFoundWrapper: {

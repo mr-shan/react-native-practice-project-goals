@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     borderRadius: 36,
     overflow: "hidden",
     margin: 18,
-    marginTop: 0,
+    marginTop: 12,
     elevation: 4
   },
   innerContainer: {
